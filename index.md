@@ -25,7 +25,7 @@ Date: September 3rd — December 20th, 2024, <span style="color:gray">Remote</sp
 - Continued work from previous on-site internship. Extension. 
 
 __[NASA Jet Propulsion Laboratory](https://www.jpl.nasa.gov/)__, _Maximizing Student Potential Fellowship_ \\
-Date: July 10th — August 16th, 2024, <span style="color:gray">Pasadena, CA</span>
+Date: June 10th — August 16th, 2024, <span style="color:gray">Pasadena, CA</span>
 
 - Worked in the _398D Instrument Operations Engineering_ branch as an intern. 
 - Migrated and extensively refactored a Sentinel-6 test-telemetry analysis tool, optimizing directory walks to effectively derive quantities from telemetry documents and streamline data ingestion processes.
@@ -47,7 +47,7 @@ Date: September 11th — December 15th, 2023, <span style="color:gray">Chicago, 
 - Assisted in departmental hardware migrations and oversaw equipment maintenance.
 
 #### Projects
-__[NASA L'SPACE Academy]()__, _Mission Concept Academy_, _Chief Scientist_\\
+__[NASA L'SPACE Academy](https://www.lspace.asu.edu/)__, _Mission Concept Academy_, _Chief Scientist_\\
 Ran through January 2024 — May 2024, <span style="color:gray">Virtual</span>
 
 - Lead the science development of mission milestones for MDR, MCR, PDR, and SRR mission papers.
