@@ -1,7 +1,6 @@
 ---
 layout: page
 title: 
-tagline: Academic, Personal, Blog
 description: Pablo Cesar Bedolla Ortiz's personal website.
 ---
 
