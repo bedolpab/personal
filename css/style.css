@@ -157,3 +157,48 @@ h4 {
 #other-link {
   color: #00ccff;
 }
+
+/* PREVIE3WS */
+/* Add a simple animation */
+.unique-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Two previews per row */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.unique-preview {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-color: #ffffff;
+  /* White background */
+  border: 2px solid #000000;
+  /* Black border */
+  overflow: hidden;
+}
+
+.unique-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Darker overlay */
+  color: rgb(255, 255, 255);
+  /* White text */
+  text-align: center;
+  opacity: 1;
+  /* Correct opacity value */
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
