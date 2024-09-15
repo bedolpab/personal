@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pablo Cesar Bedolla Ortiz - Gallery</title>
+    <meta name="author" content="Pablo Cesar Bedolla Ortiz">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Styles -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all">
+
+    <!-- Particles.js -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <!-- Atom & RSS feed -->
+    <link href="nil" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="nil" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <style>
+        /* Particle Canvas */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000000;
+            z-index: -1;
+        }
+
+        .unique-grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .unique-preview {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-color: #ffffff;
+            border: 2px solid #000000;
+            overflow: hidden;
+        }
+
+        .unique-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: rgb(255, 255, 255);
+            text-align: center;
+            opacity: 1;
+        }
+
+        .unique-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particles.js Canvas -->
+    <div id="particles-js"></div>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="container-narrow">
+                <a class="brand" href="/index.html">Pablo Cesar Bedolla Ortiz</a>
+                <a class="brand right-align" id="other-link" href="/pages/notes.html">notes</a>
+                <a class="brand right-align" id="other-link" href="/pages/relevant.html">relevant</a>
+                <a class="brand right-align" id="other-link" href="/pages/blog.html">blog</a>
+                <a class="brand right-align" id="other-link" href="/pages/gallery.html">gallery</a>
+                <a class="brand right-align" id="other-link" href="https://github.com/bedolpab">github</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-narrow">
+        <div class="content">
+            <div class="page-header">
+                <h2>Gallery</h2>
+            </div>
+
+            <div class="unique-grid-container" id="gallery-container">
+                <!-- Images will be injected here by JavaScript -->
+            </div>
+        </div>
+
+        <hr>
+        <footer style="text-align: center; padding: 20px; background-color: transparent; border-top: 1px solid #ddd;">
+            <p style="margin: 0;">
+                <small>
+                    &copy; 2024 <a href="https://pablobedolla.com" style="color: #ffffff; text-decoration: none;">Pablo
+                        Cesar
+                        Bedolla Ortiz</a>
+                </small>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Particles.js Configuration -->
+    <script src="/js/particles-config.js"></script>
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // JavaScript to dynamically generate gallery items
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('gallery-container');
+            const totalImages = 15;
+            const captions = await fetch('/data/image_captions.json').then(response => response.json());
+
+            for (let i = 1; i <= totalImages; i++) {
+                // Check for each possible file extension
+                const extensions = ['jpg', 'jpeg', 'png'];
+                let imgSrc = null;
+
+                for (const ext of extensions) {
+                    const imgPath = `/assets/images/gallery_image${i}.${ext}`;
+                    const response = await fetch(imgPath, { method: 'HEAD' });
+
+                    if (response.ok) {
+                        imgSrc = imgPath;
+                        break;
+                    }
+                }
+
+                if (!imgSrc) continue; // Skip if no image found
+
+                const captionText = captions[`jpl${i}`] || `Image ${i} Caption`;
+
+                const previewDiv = document.createElement('div');
+                previewDiv.className = 'unique-preview';
+                previewDiv.innerHTML = `
+                    <a href="${imgSrc}" target="_blank">
+                        <img src="${imgSrc}" alt="Image ${i}">
+                        <div class="unique-overlay">
+                            <h5>${captionText}</h5>
+                        </div>
+                    </a>
+                `;
+
+                container.appendChild(previewDiv);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
